@@ -57,4 +57,16 @@ public class EmployeeService {
                         .build()).toList();
     }
 
+    public List<Employee> changeName(){
+        return employeeRepository.findAll()
+                .stream()
+                .map(employee -> {
+                    if(employee.getFirstName().equalsIgnoreCase("Andrew Neil")){
+                        employee.setFirstName("Rose Anne");
+                    }
+                    Employee employee1 = new Employee(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getEmail());
+                    return employee1;
+                }).collect(Collectors.toList());
+    }
+
 }

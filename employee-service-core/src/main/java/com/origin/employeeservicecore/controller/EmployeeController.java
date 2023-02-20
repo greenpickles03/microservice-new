@@ -32,6 +32,12 @@ public class EmployeeController {
         return employeeService.addRecord(employee);
     }
 
+    @RequestMapping(value = "/changeName", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Employee> changeName(){
+        return employeeService.changeName();
+    }
+
     @RequestMapping(value = "/getAllRecord", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<EmployeeResponse> getAllRecord(){
