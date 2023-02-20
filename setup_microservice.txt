@@ -18,7 +18,7 @@ Second create a services
 	-> Mysql Driver
 	-> Eureka Discovery Client
 	-> spring-cloud-config (Config Client)
-	-> Spring webflux
+	-> Spring webflux // not yet tested
 
 basic properties configuration without service-config
 	spring.datasource.driver-class-name=
