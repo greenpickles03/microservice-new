@@ -2,31 +2,31 @@ pipeline {
   agent any
 
   stages {
-    stage('Build service-registry') {
+    stage('Build') {
       steps {
         sh 'cd service-registry && mvn clean package'
       }
     }
 
-    stage('Build edge-service') {
+    stage('Build') {
       steps {
         sh 'cd edge-service && mvn clean package'
       }
     }
 
-    stage('Build config-server') {
+    stage('Build') {
       steps {
         sh 'cd config-server && mvn clean package'
       }
     }
 
-    stage('Build department-service-core'){
+    stage('Build'){
         steps {
             sh 'cd department-service-core && mvn clean package'
         }
     }
 
-    stage('Build employee-service-core'){
+    stage('Build'){
         steps {
             sh 'cd employee-service-core && mvn clean package'
         }
