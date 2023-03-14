@@ -4,31 +4,31 @@ pipeline {
   stages {
     stage('Build service-registry') {
       steps {
-        sh 'cd service-registry && mvn clean package'
+        sh 'mvn clean package'
       }
     }
 
     stage('Build edge-service') {
       steps {
-        sh 'cd edge-service && mvn clean package'
+        sh 'mvn clean package'
       }
     }
 
     stage('Build config-server') {
       steps {
-        sh 'cd config-server && mvn clean package'
+        sh 'mvn clean package'
       }
     }
 
     stage('Build department-service-core'){
         steps {
-            sh 'cd department-service-core && mvn clean package'
+            sh 'mvn clean package'
         }
     }
 
     stage('Build employee-service-core'){
         steps {
-            sh 'cd employee-service-core && mvn clean package'
+            sh 'mvn clean package'
         }
     }
 
