@@ -2,31 +2,31 @@ pipeline {
   agent any
 
   stages {
-    stage('Build') {
+    stage('Build service-registry') {
       steps {
         sh 'mvn package'
       }
     }
 
-    stage('Build') {
+    stage('Build edge-service') {
       steps {
         sh 'mvn package'
       }
     }
 
-    stage('Build') {
+    stage('Build config-server') {
       steps {
         sh 'mvn package'
       }
     }
 
-    stage('Build'){
+    stage('Build department-service-core'){
         steps {
             sh 'mvn package'
         }
     }
 
-    stage('Build'){
+    stage('Build employee-service-core'){
         steps {
             sh 'mvn package'
         }
