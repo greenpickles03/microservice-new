@@ -53,7 +53,7 @@ pipeline {
     stage('Run'){
         steps {
              bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-             bat 'java -jar service-registry\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+             bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
         }
     }
 
