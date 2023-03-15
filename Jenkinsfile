@@ -1,46 +1,44 @@
 pipeline {
   agent any
 
+  environment {
+      SHOW_ENV_VAR = '0'
+
+      BUILD_SERVICE_REGISTRY = '0'
+      BUILD_CONFIG_SERVER = '0'
+      BUILD_SPRINGBOOT_ADMIN = '0'
+      TRANSFER_ZIPKIN_SERVICE = '0'
+
+      BUILD_SYSTEM_SERVICE = '0'
+      BUILD_SUMMARY_REPORT = '0'
+      BUILD_FIXED_ASSET = '0'
+      BUILD_RENTAL_ASSET = '0'
+      BUILD_TOOLS_EQUIP = '0'
+
+      BUILD_AUTH_SERVICE = '0'
+      BUILD_EDGE_SERVICE = '0'
+      BUILD_USER_FRONTEND = '1'
+
+      TEST_BUILD = '0'
+
+  }
+
   stages {
-    stage('Build service-registry') {
-      steps {
-        sh 'cd service-registry && mvn -Dmaven.test.failure.ignore=true clean package'
-      }
-    }
-
-    stage('Build edge-service') {
-      steps {
-        sh 'cd edge-service && mvn -Dmaven.test.failure.ignore=true clean package'
-      }
-    }
-
-    stage('Build config-server') {
-      steps {
-        sh 'cd config-server && mvn -Dmaven.test.failure.ignore=true clean package'
-      }
-    }
-
-    stage('Build department-service-core'){
-        steps {
-            sh 'cd department-service-core && mvn -Dmaven.test.failure.ignore=true clean package'
+    stage('Show Env Variable'){
+        when { expression {SHOW_ENV_VAR == '1'}}
+        steps{
+            bat "set"
         }
     }
 
-    stage('Build employee-service-core'){
+    stage('Build service-registry'){
+        when {expression {BUILD_SERVICE_REGISTRY == '1'}}
         steps {
-            sh 'cd employee-service-core && mvn -Dmaven.test.failure.ignore=true clean package'
+            dir("${WORKSPACE}\\service-registry"){
+                bat 'mvn clean install -Dmaven.test.skip=true'
+            }
         }
     }
 
-    stage('Run') {
-      steps {
-        sh 'java -jar service-registry/target/service-registry-0.0.1-SNAPSHOT.jar'
-        sh 'java -jar edge-service/target/edge-service-0.0.1-SNAPSHOT.jar'
-        sh 'java -jar config-server/target/config-server-0.0.1-SNAPSHOT.jar'
-        sh 'java -jar department-service-core/target/department-service-core-0.0.1-SNAPSHOT.jar'
-        sh 'java -jar employee-service-core/target/employee-service-core-0.0.1-SNAPSHOT.jar'
-        // Add more commands here as needed for each project
-      }
-    }
   }
 }
