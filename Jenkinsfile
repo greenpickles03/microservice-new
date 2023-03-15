@@ -30,7 +30,7 @@ pipeline {
   }
   //==============================================================
 
-//   stages {
+  stages {
 //     stage('Show Env Variable'){
 //         when { expression {SHOW_ENV_VAR == '1'}}
 //         steps{
