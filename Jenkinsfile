@@ -4,31 +4,31 @@ pipeline {
   stages {
     stage('Build service-registry') {
       steps {
-        bat 'cd service-registry && mvn clean package'
+        bat 'mvn clean install -Dmaven.test.skip=true'
       }
     }
 
     stage('Build edge-service') {
       steps {
-        bat 'cd edge-service && mvn clean package'
+        bat 'mvn clean install -Dmaven.test.skip=true'
       }
     }
 
     stage('Build config-server') {
       steps {
-        bat 'cd config-server && mvn clean package'
+        bat 'mvn clean install -Dmaven.test.skip=true'
       }
     }
 
     stage('Build department-service-core'){
         steps {
-            bat 'cd department-service-core && mvn clean package'
+           bat 'mvn clean install -Dmaven.test.skip=true'
         }
     }
 
     stage('Build employee-service-core'){
         steps {
-            bat 'cd employee-service-core && mvn clean package'
+           bat 'mvn clean install -Dmaven.test.skip=true'
         }
     }
 
