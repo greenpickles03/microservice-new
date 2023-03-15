@@ -1,6 +1,6 @@
 pipeline {
   agent any
-
+//================= Environment Variable ==============================
   environment {
       SHOW_ENV_VAR = '0'
 
@@ -22,6 +22,7 @@ pipeline {
       TEST_BUILD = '0'
 
   }
+  //==============================================================
 
   stages {
     stage('Show Env Variable'){
@@ -40,9 +41,19 @@ pipeline {
         }
     }
 
+    stage('Build edge-service'){
+        when {expression {BUILD_EDGE_SERVICE == '1'}}
+        steps {
+            dir("${WORKSPACE}\\edge-service"){
+                bat 'mvn clean install -Dmaven.test.skip=true'
+            }
+        }
+    }
+
     stage('Run'){
         steps {
              bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+             bat 'java -jar service-registry\\target\\edge-service-0.0.1-SNAPSHOT.jar'
         }
     }
 
