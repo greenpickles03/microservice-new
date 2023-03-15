@@ -1,67 +1,46 @@
 pipeline {
   agent any
-//================= Environment Variable ==============================
-  environment {
-      SHOW_ENV_VAR = '0'
-
-      BUILD_SERVICE_REGISTRY = '0'
-      BUILD_CONFIG_SERVER = '0'
-      BUILD_SPRINGBOOT_ADMIN = '0'
-      TRANSFER_ZIPKIN_SERVICE = '0'
-
-      BUILD_SYSTEM_SERVICE = '0'
-      BUILD_SUMMARY_REPORT = '0'
-      BUILD_FIXED_ASSET = '0'
-      BUILD_RENTAL_ASSET = '0'
-      BUILD_TOOLS_EQUIP = '0'
-
-      BUILD_AUTH_SERVICE = '0'
-      BUILD_EDGE_SERVICE = '0'
-      BUILD_USER_FRONTEND = '1'
-
-      TEST_BUILD = '0'
-
-  }
-  //==============================================================
 
   stages {
-    stage('Show Env Variable'){
-        when { expression {SHOW_ENV_VAR == '1'}}
-        steps{
-            bat "set"
-        }
+    stage('Build service-registry') {
+      steps {
+        bat 'cd service-registry && mvn clean package'
+      }
     }
 
-    stage('Build service-registry'){
-        when {expression {BUILD_SERVICE_REGISTRY == '1'}}
+    stage('Build edge-service') {
+      steps {
+        bat 'cd edge-service && mvn clean package'
+      }
+    }
+
+    stage('Build config-server') {
+      steps {
+        bat 'cd config-server && mvn clean package'
+      }
+    }
+
+    stage('Build department-service-core'){
         steps {
-            dir("${WORKSPACE}\\service-registry"){
-                bat 'mvn clean install -Dmaven.test.skip=true'
-            }
+            bat 'cd department-service-core && mvn clean package'
         }
     }
 
-    stage('Build edge-service'){
-        when {expression {BUILD_EDGE_SERVICE == '1'}}
+    stage('Build employee-service-core'){
         steps {
-            dir("${WORKSPACE}\\edge-service"){
-                bat 'mvn clean install -Dmaven.test.skip=true'
-            }
+            bat 'cd employee-service-core && mvn clean package'
         }
     }
 
-    stage('Run service-registry'){
-        steps {
-             sh 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-
-        }
+    stage('Run') {
+      steps {
+        bat 'java -jar service-registry/target/service-registry-0.0.1-SNAPSHOT.jar'
+        bat 'java -jar edge-service/target/edge-service-0.0.1-SNAPSHOT.jar'
+        bat 'java -jar config-server/target/config-server-0.0.1-SNAPSHOT.jar'
+        bat 'java -jar department-service-core/target/department-service-core-0.0.1-SNAPSHOT.jar'
+        bat 'java -jar employee-service-core/target/employee-service-core-0.0.1-SNAPSHOT.jar'
+        // Add more commands here as needed for each project
+      }
     }
-
-    stage('Run edge-service'){
-        steps {
-            sh 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-        }
-    }
-
   }
 }
