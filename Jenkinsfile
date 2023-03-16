@@ -62,17 +62,17 @@ pipeline {
 //         when {expression {RUN_SERVICE_REGISTRY == '1'}}
         steps {
              bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-             bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+//              bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
 
         }
     }
 
-//     stage('Run edge-service'){
+    stage('Run edge-service'){
 //         when {expression {RUN_EDGE_SERVICE == '1'}}
-//         steps {
-//             bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-//         }
-//     }
+        steps {
+            bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+        }
+    }
 
   }
 }
