@@ -67,12 +67,12 @@ pipeline {
         }
     }
 
-//     stage('Run edge-service'){
-// //         when {expression {RUN_EDGE_SERVICE == '1'}}
-//         steps {
-//             bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-//         }
-//     }
+    stage('Run edge-service'){
+//         when {expression {RUN_EDGE_SERVICE == '1'}}
+        steps {
+            bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+        }
+    }
 
   }
 }
