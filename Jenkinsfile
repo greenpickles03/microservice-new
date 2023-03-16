@@ -38,23 +38,23 @@ pipeline {
 //         }
 //     }
 //
-//     stage('Build service-registry'){
+    stage('Build service-registry'){
 //         when {expression {BUILD_SERVICE_REGISTRY == '1'}}
-//         steps {
-//             dir("${WORKSPACE}\\service-registry"){
-//                 bat 'mvn clean install -Dmaven.test.skip=true'
-//             }
-//         }
-//     }
+        steps {
+            dir("${WORKSPACE}\\service-registry"){
+                bat 'mvn clean install -Dmaven.test.skip=true'
+            }
+        }
+    }
 //
-//     stage('Build edge-service'){
+    stage('Build edge-service'){
 //         when {expression {BUILD_EDGE_SERVICE == '1'}}
-//         steps {
-//             dir("${WORKSPACE}\\edge-service"){
-//                 bat 'mvn clean install -Dmaven.test.skip=true'
-//             }
-//         }
-//     }
+        steps {
+            dir("${WORKS PACE}\\edge-service"){
+                bat 'mvn clean install -Dmaven.test.skip=true'
+            }
+        }
+    }
 
     stage('Run service-registry'){
 //         when {expression {RUN_SERVICE_REGISTRY == '1'}}
