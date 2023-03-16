@@ -31,12 +31,12 @@ pipeline {
   //==============================================================
 
   stages {
-//     stage('Show Env Variable'){
-//         when { expression {SHOW_ENV_VAR == '1'}}
-//         steps{
-//             bat "set"
-//         }
-//     }
+    stage('Show Env Variable'){
+        when { expression {SHOW_ENV_VAR == '1'}}
+        steps{
+            bat "set"
+        }
+    }
 //
 //     stage('Build service-registry'){
 // //         when {expression {BUILD_SERVICE_REGISTRY == '1'}}
@@ -59,18 +59,18 @@ pipeline {
 //     }
 
     stage('Run service-registry'){
-//         when {expression {RUN_SERVICE_REGISTRY == '1'}}
+        when {expression {RUN_SERVICE_REGISTRY == '1'}}
         steps {
-             sh 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+             bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
 //              bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
 
         }
     }
 
     stage('Run edge-service'){
-//         when {expression {RUN_EDGE_SERVICE == '1'}}
+        when {expression {RUN_EDGE_SERVICE == '1'}}
         steps {
-            sh 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+            bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
         }
     }
 
