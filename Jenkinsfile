@@ -31,12 +31,12 @@ pipeline {
   //==============================================================
 
   stages {
-//     stage('Show Env Variable'){
-//         when { expression {SHOW_ENV_VAR == '1'}}
-//         steps{
-//             bat "set"
-//         }
-//     }
+    stage('Show Env Variable'){
+        when { expression {SHOW_ENV_VAR == '1'}}
+        steps{
+            bat "set"
+        }
+    }
 //
 //     stage('Build service-registry'){
 //         when {expression {BUILD_SERVICE_REGISTRY == '1'}}
