@@ -52,7 +52,7 @@ pipeline {
 // //         when {expression {BUILD_EDGE_SERVICE == '1'}}
 //         steps {
 //             bat 'mvn clean install -Dmaven.test.skip=true'
-// //             dir("${WORKS PACE}\\edge-service"){
+// //             dir("${WORKSPACE}\\edge-service"){
 // //                 bat 'mvn clean install -Dmaven.test.skip=true'
 // //             }
 //         }
