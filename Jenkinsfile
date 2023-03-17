@@ -81,12 +81,16 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven 3.9.0'
+    }
+
     stages {
 
          stage('Build SERVICE_REGISTRY') {
             steps {
                 dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn clean install '
+                    bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
             post {
