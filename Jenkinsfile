@@ -82,17 +82,36 @@ pipeline {
     agent any
 
     stages {
-        stage('Execute JAR File 1') {
+
+         stage('Build SERVICE_REGISTRY') {
             steps {
-                bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+                dir("${WORKSPACE}\\service-registry"){
+                    bat 'mvn clean install -Dmaven.test.skip=true'
+                }
+            }
+            post {
+                success {
+                    dir("${WORKSPACE}\\service-registry\\target"){
+                        bat '''
+                            echo "Copy service registry jar to folder deployment"
+                            copy \"*.jar\" \"C://InventorySystemFiles/Application/F-01ESSENTIALS/\"
+                        '''
+                    }
+                }
             }
         }
 
-        stage('Execute JAR File 2') {
-            steps {
-                bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-            }
-        }
+//         stage('Execute JAR File 1') {
+//             steps {
+//                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
+
+//         stage('Execute JAR File 2') {
+//             steps {
+//                 bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
 
 //         stage('Execute JAR File 3') {
 //             steps {
