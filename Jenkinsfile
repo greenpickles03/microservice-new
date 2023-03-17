@@ -61,8 +61,7 @@ pipeline {
     stage('Run service-registry'){
 //         when {expression {RUN_SERVICE_REGISTRY == '1'}}
         steps {
-             sh 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-//              bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+             bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
 //              bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
 
         }
