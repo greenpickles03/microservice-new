@@ -89,7 +89,7 @@ pipeline {
 
          stage('Build SERVICE_REGISTRY') {
             steps {
-                bat 'mvn clean install'
+                bat '--mvn clean install'
 //                 dir("${WORKSPACE}\\service-registry"){
 //
 //                 }
