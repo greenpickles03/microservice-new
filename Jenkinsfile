@@ -89,10 +89,9 @@ pipeline {
 
          stage('Build SERVICE_REGISTRY') {
             steps {
-                bat '--mvn clean install'
-//                 dir("${WORKSPACE}\\service-registry"){
-//
-//                 }
+                dir("${WORKSPACE}\\service-registry"){
+                    bat 'mvn clean install -Dmaven.test.skip=true'
+                }
             }
             post {
                 success {
