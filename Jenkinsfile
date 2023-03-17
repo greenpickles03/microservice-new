@@ -82,7 +82,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'MAVEN_HOME'
+        maven 'Maven-Jenkins'
     }
 
     stages {
