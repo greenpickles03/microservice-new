@@ -129,6 +129,7 @@ pipeline {
                 dir("${WORKSPACE}\\service-registry"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
+
             }
 
         }
@@ -146,6 +147,7 @@ pipeline {
         stage('Execute JAR File 1') {
             steps {
                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+                echo "nag start"
             }
         }
 
@@ -154,11 +156,5 @@ pipeline {
                 bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
             }
         }
-
-//         stage('Execute JAR File 3') {
-//             steps {
-//                 bat 'java -jar path/to/your/jar/file3.jar'
-//             }
-//         }
     }
 }
