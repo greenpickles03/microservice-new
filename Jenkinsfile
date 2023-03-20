@@ -146,6 +146,16 @@ pipeline {
 
         }
 
+        stage('Build BUILD_CONFIG_SERVER') {
+            when { expression { BUILD_CONFIG_SERVER != '1'}}
+            steps {
+                dir("${WORKSPACE}\\config-server"){
+                    bat 'mvn clean install -Dmaven.test.skip=true'
+                    BUILD_CONFIG_SERVER = 1
+                }
+            }
+        }
+
         stage('Execute JAR File 1') {
             when { expression { BUILD_SERVICE_REGISTRY == '1' } }
             steps {
