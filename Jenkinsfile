@@ -133,6 +133,16 @@ pipeline {
 
         }
 
+        stage('Build BUILD_EDGE_SERVICE') {
+            when { expression { BUILD_EDGE_SERVICE != '1' } }
+            steps {
+                dir("${WORKSPACE}\\edge-service"){
+                    bat 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
+                }
+            }
+
+        }
+
 //         stage('Execute JAR File 1') {
 //             steps {
 //                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
