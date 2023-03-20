@@ -127,7 +127,7 @@ pipeline {
             when { expression { BUILD_SERVICE_REGISTRY != '1' } }
             steps {
                 dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
+                    sh 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
                 }
             }
 
@@ -137,7 +137,7 @@ pipeline {
             when { expression { BUILD_EDGE_SERVICE != '1' } }
             steps {
                 dir("${WORKSPACE}\\edge-service"){
-                    bat 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
+                    sh 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
                 }
             }
 
