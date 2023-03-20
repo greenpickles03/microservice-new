@@ -124,35 +124,31 @@ pipeline {
         }
 
          stage('Build SERVICE_REGISTRY') {
-            when { expression { BUILD_SERVICE_REGISTRY != '1' } }
+            when { expression { BUILD_SERVICE_REGISTRY == '0' } }
             steps {
                 dir("${WORKSPACE}\\service-registry"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
-
-
         }
 
         stage('Build BUILD_EDGE_SERVICE') {
-            when { expression { BUILD_EDGE_SERVICE != '1' } }
+            when { expression { BUILD_EDGE_SERVICE == '0' } }
             steps {
                 dir("${WORKSPACE}\\edge-service"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
-
-
         }
 
         stage('Build BUILD_CONFIG_SERVER') {
-            when { expression { BUILD_CONFIG_SERVER != '1'}}
+            when { expression { BUILD_CONFIG_SERVER == '0'}}
             steps {
                 dir("${WORKSPACE}\\config-server"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
-           
+
         }
 
 //         stage('Run Essentials Service') {
