@@ -173,6 +173,14 @@ pipeline {
             }
         }
 
+        stage('Run Essentials Service') {
+            steps {
+                dir("D:\\Jenkins_bat") {
+                    bat 'start.bat'
+                }
+            }
+        }
+
 //         stage('Run Service-Registry') {
 //             steps {
 //                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
