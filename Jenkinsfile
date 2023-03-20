@@ -110,48 +110,48 @@ pipeline {
 
     stages {
 
-        stage ('Show Env Variables') {
-            when { expression { SHOW_ENV_VAR == '1' } }
-            steps{
-                bat "set"
-            }
-        }
-
-         stage('Build SERVICE_REGISTRY') {
+//         stage ('Show Env Variables') {
+//             when { expression { SHOW_ENV_VAR == '1' } }
+//             steps{
+//                 bat "set"
+//             }
+//         }
+//
+//          stage('Build SERVICE_REGISTRY') {
 //             when { expression { BUILD_SERVICE_REGISTRY == '1' } }
+//             steps {
+//                 dir("${WORKSPACE}\\service-registry"){
+//                     bat 'mvn clean install -Dmaven.test.skip=true'
+//                 }
+//             }
+//             post {
+//                 success {
+//                     dir("${WORKSPACE}\\service-registry\\target"){
+//                         bat '''
+//                             echo "Copy service registry jar to folder deployment"
+//                             copy \"*.jar\" \"C://InventorySystemFiles/Application/F-01ESSENTIALS/\"
+//                         '''
+//                     }
+//                 }
+//             }
+//         }
+
+        stage('Execute JAR File 1') {
             steps {
-                dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn clean install -Dmaven.test.skip=true'
-                }
-            }
-            post {
-                success {
-                    dir("${WORKSPACE}\\service-registry\\target"){
-                        bat '''
-                            echo "Copy service registry jar to folder deployment"
-                            copy \"*.jar\" \"C://InventorySystemFiles/Application/F-01ESSENTIALS/\"
-                        '''
-                    }
-                }
+                bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
             }
         }
 
-//         stage('Execute JAR File 1') {
-//             steps {
-//                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-//             }
-//         }
+        stage('Execute JAR File 2') {
+            steps {
+                bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+            }
+        }
 
-//         stage('Execute JAR File 2') {
-//             steps {
-//                 bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-//             }
-//         }
-
-//         stage('Execute JAR File 3') {
-//             steps {
-//                 bat 'java -jar path/to/your/jar/file3.jar'
-//             }
-//         }
+        stage('Execute JAR File 3') {
+            steps {
+                bat 'java -jar path/to/your/jar/file3.jar'
+            }
+        }
     }
 }
