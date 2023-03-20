@@ -114,9 +114,9 @@ pipeline {
          stage('Build SERVICE_REGISTRY') {
             steps {
                 dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn spring-boot:run'
+//                     bat 'mvn clean install spring-boot:run'
 //                     bat 'mvn clean package'
-//                     bat 'mvn clean install -Dmaven.test.skip=true'
+                    bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
 //             post {
@@ -129,8 +129,9 @@ pipeline {
         stage('Build BUILD_EDGE_SERVICE') {
             steps {
                 dir("${WORKSPACE}\\edge-service"){
-                    bat 'mvn clean package'
-//                     bat 'mvn clean install -Dmaven.test.skip=true'
+//                     bat 'mvn clean install spring-boot:run'
+//                     bat 'mvn clean package'
+                    bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
 //             post {
@@ -143,8 +144,9 @@ pipeline {
         stage('Build BUILD_CONFIG_SERVER') {
             steps {
                 dir("${WORKSPACE}\\config-server"){
-                    bat 'mvn clean package'
-//                     bat 'mvn clean install -Dmaven.test.skip=true'
+//                     bat 'mvn clean install spring-boot:run'
+//                     bat 'mvn clean package'
+                    bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
 //             post {
