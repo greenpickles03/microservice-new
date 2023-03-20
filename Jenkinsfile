@@ -148,10 +148,10 @@ pipeline {
             }
         }
 
-        stage('Execute JAR File 3') {
-            steps {
-                bat 'java -jar path/to/your/jar/file3.jar'
-            }
-        }
+//         stage('Execute JAR File 3') {
+//             steps {
+//                 bat 'java -jar path/to/your/jar/file3.jar'
+//             }
+//         }
     }
 }
