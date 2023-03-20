@@ -160,29 +160,29 @@ pipeline {
 //             }
 //         }
 
-        stage('RUN_SERVICE_REGISTRY') {
-            steps {
-                dir("D:\\Jenkins_bat") {
-                       bat 'java -jar service-registry-0.0.1-SNAPSHOT.jar &'
-                }
-            }
-        }
-
-        stage('RUN_EDGE_SERVICE'){
-            steps {
-                dir("D:\\Jenkins_bat") {
-                    bat 'java -jar edge-service-0.0.1-SNAPSHOT.jar &'
-                }
-            }
-        }
-
-        stage('RUN_CONFIG_SERVER'){
-            steps {
-                dir("D:\\Jenkins_bat") {
-                    bat 'java -jar config-server-0.0.1-SNAPSHOT.jar &'
-                }
-            }
-        }
+//         stage('RUN_SERVICE_REGISTRY') {
+//             steps {
+//                 dir("D:\\Jenkins_bat") {
+//                        bat 'java -jar service-registry-0.0.1-SNAPSHOT.jar &'
+//                 }
+//             }
+//         }
+//
+//         stage('RUN_EDGE_SERVICE'){
+//             steps {
+//                 dir("D:\\Jenkins_bat") {
+//                     bat 'java -jar edge-service-0.0.1-SNAPSHOT.jar &'
+//                 }
+//             }
+//         }
+//
+//         stage('RUN_CONFIG_SERVER'){
+//             steps {
+//                 dir("D:\\Jenkins_bat") {
+//                     bat 'java -jar config-server-0.0.1-SNAPSHOT.jar &'
+//                 }
+//             }
+//         }
 
 
 //         stage('Run Service-Registry') {
