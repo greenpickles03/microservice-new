@@ -110,6 +110,12 @@ pipeline {
 
     stages {
 
+        stage ("display"){
+            steps{
+                 echo "Variable $BUILD_SERVICE_REGISTRY"
+            }
+        }
+
         stage ('Show Env Variables') {
             when { expression { SHOW_ENV_VAR == '1' } }
             steps{
