@@ -118,7 +118,7 @@ pipeline {
         }
 
          stage('Build SERVICE_REGISTRY') {
-            when { expression { BUILD_SERVICE_REGISTRY == '1' } }
+//             when { expression { BUILD_SERVICE_REGISTRY == '1' } }
             steps {
                 dir("${WORKSPACE}\\service-registry"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
