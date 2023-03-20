@@ -133,9 +133,7 @@ pipeline {
             post {
                 success {
                     dir("${WORKSPACE}\\service-registry\\target"){
-                        bat '''
-                            copy \"*.jar\" \ "D:\Jenkins_bat"
-                        '''
+                        bat 'xcopy /Y service-registry-0.0.1-SNAPSHOT.jar D:\Jenkins_bat'
                     }
                 }
             }
@@ -152,9 +150,7 @@ pipeline {
             post {
                 success {
                     dir("${WORKSPACE}\\edge-service\\target"){
-                       bat '''
-                           copy \"*.jar\" \ "D:\Jenkins_bat"
-                       '''
+                       bat 'xcopy /Y edge-service-0.0.1-SNAPSHOT.jar D:\Jenkins_bat'
                     }
                 }
             }
@@ -171,9 +167,7 @@ pipeline {
             post {
                 success {
                     dir("${WORKSPACE}\\config-server\\target"){
-                        bat '''
-                            copy \"*.jar\" \ "D:\Jenkins_bat"
-                        '''
+                         bat 'xcopy /Y config-server-0.0.1-SNAPSHOT.jar D:\Jenkins_bat'
                     }
                 }
             }
