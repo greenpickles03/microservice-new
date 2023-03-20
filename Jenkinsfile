@@ -130,16 +130,7 @@ pipeline {
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
-            post {
-                success {
-                    dir("${WORKSPACE}\\service-registry\\target"){
-                        bat '''
-                            echo "Copy service registry jar to folder deployment"
-                            copy \"*.jar\" \"C://InventorySystemFiles/Application/F-01ESSENTIALS/\"
-                        '''
-                    }
-                }
-            }
+            
         }
 
 //         stage('Execute JAR File 1') {
