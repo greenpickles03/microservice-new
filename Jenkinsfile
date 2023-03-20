@@ -132,7 +132,8 @@ pipeline {
             }
             post {
                 success {
-                  bat 'java -jar service-registry-0.0.1-SNAPSHOT.jar'
+                echo "success"
+//                   bat 'java -jar service-registry-0.0.1-SNAPSHOT.jar'
 //                     dir("${WORKSPACE}\\service-registry\\target"){
 //
 // //                         bat 'xcopy /Y service-registry-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
@@ -151,7 +152,7 @@ pipeline {
             }
             post {
                 success {
-                  bat 'java -jar edge-service-0.0.1-SNAPSHOT.jar'
+//                   bat 'java -jar edge-service-0.0.1-SNAPSHOT.jar'
 //                     dir("${WORKSPACE}\\edge-service\\target"){
 //
 // //                        bat 'xcopy /Y edge-service-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
@@ -170,7 +171,7 @@ pipeline {
             }
             post {
                 success {
-                 bat 'java -jar config-server-0.0.1-SNAPSHOT.jar'
+//                  bat 'java -jar config-server-0.0.1-SNAPSHOT.jar'
 //                     dir("${WORKSPACE}\\config-server\\target"){
 //
 // //                          bat 'xcopy /Y config-server-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
