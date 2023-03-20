@@ -129,19 +129,19 @@ pipeline {
 
         stage('Run Service-Registry') {
             steps {
-                sh 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+                bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
             }
         }
 
         stage('Run Edge-Service') {
             steps {
-                sh 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+                bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
             }
         }
 
         stage('Run Config-Server'){
             steps {
-                sh 'java -jar config-server\\target\\config-server-0.0.1-SNAPSHOT.jar'
+                bat 'java -jar config-server\\target\\config-server-0.0.1-SNAPSHOT.jar'
             }
         }
     }
