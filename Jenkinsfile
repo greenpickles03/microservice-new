@@ -129,7 +129,13 @@ pipeline {
                 dir("${WORKSPACE}\\service-registry"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
-
+            }
+            post {
+                success {
+                    dir("${WORKSPACE}\\service-registry\\target"){
+                        bat 'copy \"*.jar\" \ "D:\Jenkins_bat"'
+                    }
+                }
             }
 
         }
@@ -139,6 +145,13 @@ pipeline {
             steps {
                 dir("${WORKSPACE}\\edge-service"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
+                }
+            }
+            post {
+                success {
+                    dir("${WORKSPACE}\\edge-service\\target"){
+                        bat 'copy \"*.jar\" \ "D:\Jenkins_bat"'
+                    }
                 }
             }
 
@@ -151,24 +164,31 @@ pipeline {
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
-        }
-
-        stage('Run Service-Registry') {
-            steps {
-                bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+            post {
+                success {
+                    dir("${WORKSPACE}\\config-server\\target"){
+                        bat 'copy \"*.jar\" \ "D:\Jenkins_bat"'
+                    }
+                }
             }
         }
 
-        stage('Run Edge-Service') {
-            steps {
-                bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
-            }
-        }
-
-        stage('Run Config-Server'){
-            steps {
-                bat 'java -jar config-server\\target\\config-server-0.0.1-SNAPSHOT.jar'
-            }
-        }
+//         stage('Run Service-Registry') {
+//             steps {
+//                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
+//
+//         stage('Run Edge-Service') {
+//             steps {
+//                 bat 'java -jar edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
+//
+//         stage('Run Config-Server'){
+//             steps {
+//                 bat 'java -jar config-server\\target\\config-server-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
     }
 }
