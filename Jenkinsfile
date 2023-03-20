@@ -151,14 +151,14 @@ pipeline {
 
         }
 
-        stage('Run react app'){
-            steps {
-                dir("D:\\Jenkins_bat\\react"){
-                    bat 'npm install -g serve'
-                    bat 'serve -s build'
-                }
-            }
-        }
+//         stage('Run react app'){
+//             steps {
+//                 dir("D:\\Jenkins_bat\\react"){
+//                     bat 'npm install -g serve'
+//                     bat 'serve -s build'
+//                 }
+//             }
+//         }
 
         stage('Run Essentials Service') {
             steps {
