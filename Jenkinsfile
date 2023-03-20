@@ -127,17 +127,17 @@ pipeline {
             when { expression { BUILD_SERVICE_REGISTRY != '1' } }
             steps {
                 dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn clean install -Dmaven.test.skip=true'
+                    bat 'mvn clean install spring-boot:run -Dmaven.test.skip=true'
                 }
             }
 
         }
 
-        stage('Execute JAR File 1') {
-            steps {
-                bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
-            }
-        }
+//         stage('Execute JAR File 1') {
+//             steps {
+//                 bat 'java -jar service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar'
+//             }
+//         }
 //
 //         stage('Execute JAR File 2') {
 //             steps {
