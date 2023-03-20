@@ -130,6 +130,11 @@ pipeline {
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
+            post {
+                success {
+                    echo "build tagumpay"
+                }
+            }
         }
 
         stage('Build BUILD_EDGE_SERVICE') {
