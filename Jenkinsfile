@@ -132,7 +132,7 @@ pipeline {
             }
             post {
                 success {
-                    echo "build tagumpay"
+                    bat 'xcopy service-registry\\target\\service-registry-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
                 }
             }
         }
@@ -144,6 +144,11 @@ pipeline {
                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
+            post {
+                success {
+                    bat 'xcopy edge-service\\target\\edge-service-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
+                }
+            }
         }
 
         stage('Build BUILD_CONFIG_SERVER') {
@@ -151,6 +156,11 @@ pipeline {
             steps {
                 dir("${WORKSPACE}\\config-server"){
                     bat 'mvn clean install -Dmaven.test.skip=true'
+                }
+            }
+            post {
+                success {
+                    bat 'xcopy config-server\\target\\config-server-0.0.1-SNAPSHOT.jar D:\\Jenkins_bat'
                 }
             }
 
