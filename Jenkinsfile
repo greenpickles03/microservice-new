@@ -114,7 +114,8 @@ pipeline {
          stage('Build SERVICE_REGISTRY') {
             steps {
                 dir("${WORKSPACE}\\service-registry"){
-                    bat 'mvn clean package'
+                    bat 'mvn spring-boot:run'
+//                     bat 'mvn clean package'
 //                     bat 'mvn clean install -Dmaven.test.skip=true'
                 }
             }
