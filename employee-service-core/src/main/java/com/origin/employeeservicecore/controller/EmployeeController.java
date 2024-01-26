@@ -26,6 +26,10 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @RequestMapping(value = "/addRecord", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public List<Map> addRecord(@RequestBody Employee employee){
@@ -41,7 +45,7 @@ public class EmployeeController {
     @RequestMapping(value = "/getAllRecord", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<EmployeeResponse> getAllRecord(){
-        log.info("all record: " + employeeService.getAllRecord());
+//        log.info("all record: " + employeeService.getAllRecord());
         return employeeService.getAllRecord();
     }
 
