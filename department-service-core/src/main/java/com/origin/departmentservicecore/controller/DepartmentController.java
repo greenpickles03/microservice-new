@@ -24,10 +24,6 @@ public class DepartmentController {
 
     private final DepartmentService departmentService;
 
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
-    }
-
 
     @RequestMapping(value = "/viewAllRecord", method = RequestMethod.GET)
     public List<DepartmentResponse> viewAllRecord(){
